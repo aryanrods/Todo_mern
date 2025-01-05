@@ -1,6 +1,7 @@
 const express = require("express");
 const connectToDB = require("./conn/conn");
-const auth = require("./routes/auth");
+const auth = require("./routes/auth.routes");
+const List = require("./routes/list.routes");
 
 const app = express();
 
@@ -11,6 +12,7 @@ connectToDB();
 app.use(express.json());
 
 app.use("/api/v1", auth);
+app.use("/api/v2", List);
 
 // Routes
 app.get("/", (req, res) => {
