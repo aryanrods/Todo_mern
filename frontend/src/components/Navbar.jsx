@@ -5,23 +5,23 @@ import "./navbar.css";
 export default function Navbar() {
   return (
     <>
-      <header class="shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] sticky top-0 py-3 px-4 sm:px-10 bg-white z-50 min-h-[70px]">
-        <div class="flex flex-wrap items-center gap-4">
+      <header className="shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] sticky top-0 py-3 px-4 sm:px-10 bg-white z-50 min-h-[70px]">
+        <div className="flex flex-wrap items-center gap-4">
           <Link to="/">
             <b className="font-black text-3xl">TODO</b>
           </Link>
 
           <div
             id="collapseMenu"
-            class="max-lg:hidden lg:!block max-lg:fixed max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50"
+            className="max-lg:hidden lg:!block max-lg:fixed max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50"
           >
             <button
               id="toggleClose"
-              class="lg:hidden fixed top-2 right-4 z-[100] rounded-full bg-white p-3"
+              className="lg:hidden fixed top-2 right-4 z-[100] rounded-full bg-white p-3"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="w-4 fill-black"
+                className="w-4 fill-black"
                 viewBox="0 0 320.591 320.591"
               >
                 <path
@@ -34,71 +34,40 @@ export default function Navbar() {
                 ></path>
               </svg>
             </button>
+          </div>
 
-            <ul class="lg:ml-12 lg:flex gap-x-6 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
-              <li class="mb-6 hidden max-lg:block">
-                <a href="javascript:void(0)">
-                  <img
-                    src="https://readymadeui.com/readymadeui.svg"
-                    alt="logo"
-                    class="w-36"
-                  />
-                </a>
-              </li>
-              <li class="max-lg:border-b max-lg:py-3 px-3">
-                <a
-                  href="javascript:void(0)"
-                  class="hover:text-blue-600 text-blue-600 block font-semibold transition-all"
+          <div className="flex ml-auto">
+            <ul className="lg:ml-12 lg:flex max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
+              <li className="max-lg:border-b max-lg:py-3 px-3">
+                <Link
+                  className="hover:text-blue-800 text-blue-600 block font-semibold transition-all px-2 py-2.5 hover:no-underline"
+                  to="/"
                 >
                   Home
-                </a>
+                </Link>
               </li>
-              <li class="max-lg:border-b max-lg:py-3 px-3">
-                <a
-                  href="javascript:void(0)"
-                  class="hover:text-blue-600 block font-semibold transition-all"
+
+              <li className="max-lg:border-b max-lg:py-3 px-3">
+                <Link
+                  to="/About"
+                  className="hover:text-blue-800 text-blue-600 block font-semibold transition-all px-2 py-2.5 no-underline hover:no-underline"
                 >
-                  Team
-                </a>
+                  About
+                </Link>
               </li>
-              <li class="max-lg:border-b max-lg:py-3 px-3">
-                <a
-                  href="javascript:void(0)"
-                  class="hover:text-blue-600 block font-semibold transition-all"
-                >
-                  Feature
-                </a>
-              </li>
-              <li class="max-lg:border-b max-lg:py-3 px-3">
-                <a
-                  href="javascript:void(0)"
-                  class="hover:text-blue-600 block font-semibold transition-all"
-                >
-                  Blog
-                </a>
-              </li>
-              <li class="max-lg:border-b max-lg:py-3 px-3">
-                <Link to="/About">
-                  <a
-                    href="javascript:void(0)"
-                    class="hover:text-blue-600 block font-semibold transition-all"
-                  >
-                    About
-                  </a>
+
+              <li className="max-lg:border-b max-lg:py-3 px-3">
+                {" "}
+                <Link to="/signin">
+                  <button className="hover:text-blue-800 mr-5 font-semibold text-blue-600 font-semibold border-none outline-none px-2 py-2.5">
+                    Log in
+                  </button>
                 </Link>
               </li>
             </ul>
-          </div>
-
-          <div class="flex ml-auto">
-            <Link to="/signin">
-              <button class="mr-6 font-semibold border-none outline-none px-2 py-2.5">
-                Login
-              </button>
-            </Link>
 
             <Link to="/signup">
-              <button class="bg-blue-600 hover:bg-blue-700 transition-all text-white rounded-full px-5 py-2.5">
+              <button className="bg-blue-600 hover:bg-blue-700 transition-all text-white rounded-full px-5 py-2.5">
                 Sign up
               </button>
             </Link>
