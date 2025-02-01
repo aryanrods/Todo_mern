@@ -112,6 +112,7 @@ router.delete("/deleteTask/:id", async (req, res) => {
 
 router.get("/getTasks/:userId", async (req, res) => {
   try {
+    s;
     const { userId } = req.params;
 
     // Fetch tasks for the given user ID
