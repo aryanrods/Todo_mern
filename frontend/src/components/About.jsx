@@ -1,7 +1,14 @@
 import React from "react";
-
+import Navbar from "./Navbar";
+import "./About.css";
 const About = () => {
-  return <div>About</div>;
+  return (
+    <>
+      <Navbar></Navbar>
+
+      <div>About</div>
+    </>
+  );
 };
 
 export default About;
