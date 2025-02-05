@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./navbar.css";
 
 export default function Navbar() {
   return (
@@ -37,7 +36,7 @@ export default function Navbar() {
           </div>
 
           <div className="flex ml-auto">
-            <ul className="lg:ml-12 lg:flex max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
+            <ul className="lg:ml-12 lg:flex max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50 mr-10">
               <li className="max-lg:border-b max-lg:py-3 px-3">
                 <Link
                   className="hover:text-blue-800 text-blue-600 block font-semibold transition-all px-2 py-2.5 hover:no-underline"
@@ -59,9 +58,18 @@ export default function Navbar() {
               <li className="max-lg:border-b max-lg:py-3 px-3">
                 {" "}
                 <Link to="/signin">
-                  <button className="hover:text-blue-800 mr-5 font-semibold text-blue-600 font-semibold border-none outline-none px-2 py-2.5">
+                  <button className="hover:text-blue-800  font-semibold text-blue-600 font-semibold border-none outline-none px-2 py-2.5">
                     Log in
                   </button>
+                </Link>
+              </li>
+
+              <li className="max-lg:border-b max-lg:py-3 px-3">
+                <Link
+                  to="/todo"
+                  className="hover:text-blue-800 text-blue-600 block font-semibold transition-all px-2 py-2.5 no-underline hover:no-underline"
+                >
+                  To Do
                 </Link>
               </li>
             </ul>

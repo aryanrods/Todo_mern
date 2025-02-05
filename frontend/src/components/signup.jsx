@@ -1,5 +1,5 @@
 import React from "react";
-import "./signup.css";
+
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 
@@ -53,12 +53,12 @@ const Signup = () => {
                   className="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                 />
                 <label
-                  for="remember-me"
+                  htmlFor="remember-me"
                   className="text-gray-800 ml-3 block text-sm"
                 >
                   I accept the{" "}
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     className="text-blue-600 font-semibold hover:underline ml-1"
                   >
                     Terms and Conditions

@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
-import "./signin.css";
+
 import { Link } from "react-router-dom";
 
 const Signin = () => {
@@ -16,7 +16,7 @@ const Signin = () => {
               </h2>
               <form class="mt-8 space-y-4">
                 <div>
-                  <label class="text-gray-800 text-sm mb-2 block">email</label>
+                  <label class="text-gray-800 text-sm mb-2 block">Email</label>
                   <div class="relative flex items-center">
                     <input
                       name="username"

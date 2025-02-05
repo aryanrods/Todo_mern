@@ -1,6 +1,7 @@
 import React from "react";
-import "./Home.css";
+
 import Navbar from "./Navbar";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -22,9 +23,11 @@ const Home = () => {
               organized and productive you.
             </p>
             <div className="mt-11">
-              <button className="bg-blue-600 hover:bg-blue-700 transition-all text-white rounded-full px-5 py-2.5">
-                Get started today
-              </button>
+              <Link to="/signup">
+                <button className="bg-blue-600 hover:bg-blue-700 transition-all text-white rounded-full px-5 py-2.5">
+                  Get Started{" "}
+                </button>
+              </Link>
             </div>
           </div>
           <hr className="my-12 border-gray-300" />

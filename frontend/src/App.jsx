@@ -9,6 +9,7 @@ import {
 import About from "./components/About";
 import Signup from "./components/signup";
 import Signin from "./components/signin";
+import ToDo from "./components/ToDo";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -31,6 +32,10 @@ export default function App() {
     {
       path: "*",
       element: <div>404 Not Found</div>,
+    },
+    {
+      path: "/todo",
+      element: <ToDo />,
     },
   ]);
 
