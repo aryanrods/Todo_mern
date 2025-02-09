@@ -10,6 +10,7 @@ import About from "./components/About";
 import Signup from "./components/signup";
 import Signin from "./components/signin";
 import ToDo from "./components/ToDo";
+import Updatetodo from "./components/updatetodo";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -36,6 +37,10 @@ export default function App() {
     {
       path: "/todo",
       element: <ToDo />,
+    },
+    {
+      path: "/updatetask",
+      element: <Updatetodo />,
     },
   ]);
 

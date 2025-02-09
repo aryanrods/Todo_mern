@@ -2,6 +2,8 @@ import React from "react";
 import Navbar from "./Navbar";
 import { useState } from "react";
 import Todocard from "./todocard";
+import Updatetodo from "./updatetodo";
+
 const ToDo = () => {
   const [todo, setTodo] = useState({ title: "", task: "" });
   const [list, setList] = useState([]);
@@ -17,10 +19,11 @@ const ToDo = () => {
     setTodo({ ...todo, [name]: value });
   };
 
+  const del = (id) => {};
   return (
     <div>
       <Navbar></Navbar>
-      <div className="flex flex-col justify-center max-w-lg mx-auto px-4 space-y-6 font-[sans-serif] text-[#333]">
+      <div className="flex flex-col justify-center max-w-lg mx-auto px-4 space-y-6 font-[sans-serif] text-[#333] pt-6 pb-6 ">
         <div>
           <label className="mb-2 text-lg block font-[sans-serif]">Title</label>
           <input
@@ -38,8 +41,8 @@ const ToDo = () => {
             placeholder="Type Message"
             className="p-4 bg-white max-w-md mx-auto w-full block text-lg border border-gray-400 outline-[#007bff] rounded"
             rows="4"
-            name="Task"
-            value={todo.Task}
+            name="task"
+            value={todo.task}
             onChange={handleInput}
           ></textarea>
         </div>
@@ -55,9 +58,13 @@ const ToDo = () => {
 
       {list &&
         list.map((items, index) => (
-          <>
-            <Todocard title={todo.title} message={todo.task}></Todocard>
-          </>
+          <Todocard
+            key={index}
+            title={items.title}
+            message={items.task}
+            id={index}
+            delid={del}
+          ></Todocard>
         ))}
     </div>
   );

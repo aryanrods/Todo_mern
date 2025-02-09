@@ -1,9 +1,21 @@
-import React from "react";
-
+import React, { useState } from "react";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Signup = () => {
+  const [input, setInput] = useState({ email: "", password: "", username: "" });
+
+  const handlesubmit = (e) => {
+    const { value, name } = e.target;
+    setInput({ ...input, [name]: value });
+  };
+
+  const submit = async () => {
+    axios
+      .post("http://localhost:5000/api/v1/register", input)
+      .then((res) => {});
+  };
   return (
     <>
       <Navbar></Navbar>
@@ -18,8 +30,10 @@ const Signup = () => {
                 <input
                   name="email"
                   type="text"
+                  value={input.email}
                   className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
                   placeholder="Email"
+                  onChange={handlesubmit}
                 />
               </div>
               <div>
@@ -27,10 +41,12 @@ const Signup = () => {
                   Username
                 </label>
                 <input
-                  name="Username"
+                  name="username"
                   type="username"
                   className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
                   placeholder="Username"
+                  onChange={handlesubmit}
+                  value={input.username}
                 />
               </div>
               <div>
@@ -42,6 +58,8 @@ const Signup = () => {
                   type="password"
                   className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
                   placeholder="password"
+                  onChange={handlesubmit}
+                  value={input.password}
                 />
               </div>
 
@@ -69,6 +87,7 @@ const Signup = () => {
 
             <div className="!mt-8">
               <button
+                onClick={submit}
                 type="button"
                 className="w-full py-3 px-4 text-sm tracking-wider font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
               >
