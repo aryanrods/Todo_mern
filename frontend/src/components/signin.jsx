@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 
 const Signin = () => {
+  const [input, semInput] = useState({ email: "", password: "" });
   return (
     <>
       <Navbar></Navbar>

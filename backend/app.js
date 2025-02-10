@@ -2,11 +2,13 @@ const express = require("express");
 const connectToDB = require("./conn/conn");
 const auth = require("./routes/auth.routes");
 const List = require("./routes/list.routes");
+const cors = require("cors");
 
 const app = express();
 
 // Connect to the database
 connectToDB();
+app.use(cors());
 
 // Middleware
 app.use(express.json());

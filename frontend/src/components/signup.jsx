@@ -6,22 +6,37 @@ import axios from "axios";
 const Signup = () => {
   const [input, setInput] = useState({ email: "", password: "", username: "" });
 
-  const handlesubmit = (e) => {
+  const handleChange = (e) => {
     const { value, name } = e.target;
     setInput({ ...input, [name]: value });
   };
 
-  const submit = async () => {
-    axios
-      .post("http://localhost:5000/api/v1/register", input)
-      .then((res) => {});
+  const submit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post("http://localhost:5001/api/v1/register", {
+        email: input.email,
+        password: input.password,
+        username: input.username,
+      });
+      alert(error.response ? error.response.data.message : error.message);
+      console.log(res);
+      setInput({ email: "", password: "", username: "" });
+    } catch (error) {
+      console.error(
+        "Error during signup:",
+        error.response ? error.response.data : error.message
+      );
+      alert(error.response.data.message);
+    }
   };
+
   return (
     <>
       <Navbar></Navbar>
       <div className="flex flex-col justify-center font-[sans-serif] sm:h-screen p-4">
         <div className="max-w-md w-full mx-auto border border-gray-300 rounded-2xl p-8">
-          <form>
+          <form onSubmit={submit}>
             <div className="space-y-6">
               <div>
                 <label className="text-gray-800 text-sm mb-2 block">
@@ -29,11 +44,11 @@ const Signup = () => {
                 </label>
                 <input
                   name="email"
-                  type="text"
+                  type="email"
                   value={input.email}
                   className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
                   placeholder="Email"
-                  onChange={handlesubmit}
+                  onChange={handleChange}
                 />
               </div>
               <div>
@@ -42,10 +57,10 @@ const Signup = () => {
                 </label>
                 <input
                   name="username"
-                  type="username"
+                  type="text"
                   className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
                   placeholder="Username"
-                  onChange={handlesubmit}
+                  onChange={handleChange}
                   value={input.username}
                 />
               </div>
@@ -58,7 +73,7 @@ const Signup = () => {
                   type="password"
                   className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
                   placeholder="password"
-                  onChange={handlesubmit}
+                  onChange={handleChange}
                   value={input.password}
                 />
               </div>
@@ -87,8 +102,7 @@ const Signup = () => {
 
             <div className="!mt-8">
               <button
-                onClick={submit}
-                type="button"
+                type="submit"
                 className="w-full py-3 px-4 text-sm tracking-wider font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
               >
                 Create an account
