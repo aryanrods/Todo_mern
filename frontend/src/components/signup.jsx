@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
 const Signup = () => {
+  const history = useNavigate();
   const [input, setInput] = useState({ email: "", password: "", username: "" });
 
   const handleChange = (e) => {
@@ -19,6 +20,10 @@ const Signup = () => {
         password: input.password,
         username: input.username,
       });
+      alert(res.data.message);
+      if (res.status === 201) {
+        history("/signin");
+      }
       alert(error.response ? error.response.data.message : error.message);
       console.log(res);
       setInput({ email: "", password: "", username: "" });

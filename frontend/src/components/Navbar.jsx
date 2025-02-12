@@ -1,7 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { authActions } from "../store/index";
+import { useNavigate } from "react-router-dom";
 export default function Navbar() {
+  const history = useNavigate();
+  const dispatch = useDispatch();
+  const isLoggedin = useSelector((state) => state.isLoggedin);
+  const logout = () => {
+    dispatch(authActions.logout());
+    sessionStorage.removeItem("userId");
+    history("/");
+  };
+
   return (
     <>
       <header className="shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] sticky top-0 py-3 px-4 sm:px-10 bg-white z-50 min-h-[70px]">
@@ -55,30 +67,44 @@ export default function Navbar() {
                 </Link>
               </li>
 
-              <li className="max-lg:border-b max-lg:py-3 px-3">
-                {" "}
-                <Link to="/signin">
-                  <button className="hover:text-blue-800  font-semibold text-blue-600 font-semibold border-none outline-none px-2 py-2.5">
-                    Log in
-                  </button>
-                </Link>
-              </li>
-
-              <li className="max-lg:border-b max-lg:py-3 px-3">
-                <Link
-                  to="/todo"
-                  className="hover:text-blue-800 text-blue-600 block font-semibold transition-all px-2 py-2.5 no-underline hover:no-underline"
-                >
-                  To Do
-                </Link>
-              </li>
+              {!isLoggedin && (
+                <li className="max-lg:border-b max-lg:py-3 px-3">
+                  {" "}
+                  <Link to="/signin">
+                    <button className="hover:text-blue-800  font-semibold text-blue-600 font-semibold border-none outline-none px-2 py-2.5">
+                      Log in
+                    </button>
+                  </Link>
+                </li>
+              )}
+              {isLoggedin && (
+                <li className="max-lg:border-b max-lg:py-3 px-3">
+                  <Link
+                    to="/todo"
+                    className="hover:text-blue-800 text-blue-600 block font-semibold transition-all px-2 py-2.5 no-underline hover:no-underline"
+                  >
+                    To Do
+                  </Link>
+                </li>
+              )}
             </ul>
 
-            <Link to="/signup">
-              <button className="bg-blue-600 hover:bg-blue-700 transition-all text-white rounded-full px-5 py-2.5">
-                Sign up
+            {isLoggedin && (
+              <button
+                onClick={logout}
+                className="bg-blue-600 hover:bg-blue-700 transition-all text-white rounded-full px-5 py-2.5"
+              >
+                Logout
               </button>
-            </Link>
+            )}
+
+            {!isLoggedin && (
+              <Link to="/signup">
+                <button className="bg-blue-600 hover:bg-blue-700 transition-all text-white rounded-full px-5 py-2.5">
+                  Sign up
+                </button>
+              </Link>
+            )}
           </div>
         </div>
       </header>
